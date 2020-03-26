@@ -1,0 +1,5 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+acl_course,courses.course_default,model_courses_course,,1,1,1,1
+acl_student,courses.student_default,model_courses_student,,1,1,1,1
+acl_teaching,courses.teaching_default,model_courses_teaching,,1,1,1,1
+

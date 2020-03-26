@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id='courses_student_action' model='ir.actions.act_window'>
+        <field name="name">Courses Student</field>
+        <field name="res_model">courses.student</field>
+        <field name="view_type">form</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <menuitem name="Students" id="courses_student_menu" parent="courses_base_menu" action="courses_student_action"/>
+
+    <record id="courses_student_view_form" model="ir.ui.view">
+        <field name="name">Courses Student Form</field>
+        <field name="model">courses.student</field>
+        <field name="arch" type="xml">
+            <form>
+                <header>
+                    <button name="make_available" string="Make Available" type="object"/>
+                    <button name="make_unavailable"  string="Make Unavailable" type="object"/>
+                </header>
+                <group>
+                    <group>
+                        <field name="partner_id"/>
+                        <field name="student_phone"/>
+                        <field name="photo" widget="image" class="oe_avatar"/>
+                        <field name="age"/>
+                    </group>
+                    <group>
+                        <field name="date_start"/>
+                        <field name="date_birth"/>
+                        <field name="is_assigned"/>
+                    </group>
+                </group>
+            </form>
+        </field>
+    </record>
+
+    <record id="courses_student_view_tree" model="ir.ui.view">
+        <field name="name">Courses Student List</field>
+        <field name="model">courses.student</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="name"/>
+                <field name="partner_id"/>
+                <field name="student_phone"/>
+                <field name="state"/>
+            </tree>
+        </field>
+    </record>
+</odoo>

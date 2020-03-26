@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id='courses_teaching_action' model='ir.actions.act_window'>
+        <field name="name">Courses Teaching</field>
+        <field name="res_model">courses.teaching</field>
+        <field name="view_type">form</field>
+        <field name="view_mode">tree,form,calendar</field>
+    </record>
+
+    <menuitem name="Impartitions" id="courses_teaching_menu" parent="courses_base_menu" action="courses_teaching_action"/>
+
+    <record id="courses_student_view_form" model="ir.ui.view">
+        <field name="name">Courses Teaching Form</field>
+        <field name="model">courses.teaching</field>
+        <field name="arch" type="xml">
+        <form>
+            <group>
+                <group>
+                    <field name="student_id"/>
+                    <field name="course_id"/>
+                    <field name="course_level"/>
+                    <field name="student_photo" widget="image" class="oe_avatar"/>
+                </group>
+                <group>
+                    <field name="date_start"/>
+                    <field name="date_end"/>
+                </group>
+            </group>
+        </form>
+        </field>
+    </record>
+
+    <record id="courses_teaching_view_tree" model="ir.ui.view">
+        <field name="name">Courses Teaching List</field>
+        <field name="model">courses.teaching</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="student_id"/>
+                <field name="course_id"/>
+                <field name="course_level"/>
+                <field name="date_start"/>
+                <field name="date_end"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="courses_course_view_calendar" model="ir.ui.view">
+        <field name="name">Courses Course Calendar</field>
+        <field name="model">courses.teaching</field>
+        <field name="arch" type="xml">
+            <calendar string="Impartitions" date_start="date_start" date_stop="date_end" mode="week" color="course_id" form_view_id="courses_student_view_form">
+                <field name="course_id"/>
+                <field name="student_id"/>
+            </calendar>
+        </field>
+    </record>
+
+</odoo>
