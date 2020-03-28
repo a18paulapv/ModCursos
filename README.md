@@ -1,5 +1,9 @@
 # Módulo "My Courses"
 
+Versión de Odoo: 12
+
+URL del repositorio: https://github.com/a18paulapv/ModCursos
+
 Este módulo sirve para gestionar alumnos, cursos y sus respectivas imparticiones, y saber así qué alumno asiste a cada curso y cuándo. Su objetivo es facilitar la gestión a institutos, colegios y academias.
 
 Manejar este módulo es muy sencillo. Podemos gestionar los siguientes datos de un curso(Modelo: **courses.course**):
