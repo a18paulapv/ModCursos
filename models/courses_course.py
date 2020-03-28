@@ -34,7 +34,7 @@ class CoursesStudent(models.Model):
     age=fields.Integer('Age', compute='check_age', store=False)
     is_assigned=fields.Boolean('Assigned', compute='check_assigned', default=False)
     state = fields.Selection([
-        ('unavailable', 'Unavailable'),
+        ('unavailable', 'Locked'),
         ('available', 'Available')],
         'State', default="available")
 
@@ -73,7 +73,7 @@ class CoursesStudent(models.Model):
             if student.is_allowed_transition(student.state, new_state):
                 student.state = new_state
             else:
-                message = _('Moving from %s to %s is not allowd') % (student.state, new_state)
+                message = _('Moving from %s to %s is not allowed') % (student.state, new_state)
                 raise UserError(message)
 
     def make_available(self):
@@ -90,7 +90,7 @@ class CoursesTeaching(models.Model):
     student_id=fields.Many2one('courses.student', required=True)
     course_id=fields.Many2one('courses.course', required=True)
     date_start=fields.Date('Start date of the course', default=lambda*a:datetime.now().strftime('%Y-%m-%d'))
-    date_end=fields.Date('End date of the course', default=lambda*a:(datetime.now()+timedelta(days=(90))).strftime('%Y-%m-%d'))
+    date_end=fields.Date('End date of the course', default=lambda*a:(datetime.now()+timedelta(days=(270))).strftime('%Y-%m-%d'))
     student_photo=fields.Binary('Student Photo', related='student_id.photo')
     course_level=fields.Integer('Level', related='course_id.level')
 
@@ -113,3 +113,4 @@ class CoursesTeaching(models.Model):
             student.is_assigned = self.search(domain, count=True) > 1
             if student.is_assigned:
                 raise models.ValidationError('This Student is Assigned with other course!')
+

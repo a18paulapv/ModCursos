@@ -16,7 +16,7 @@
             <form>
                 <header>
                     <button name="make_available" string="Make Available" type="object"/>
-                    <button name="make_unavailable"  string="Make Unavailable" type="object"/>
+                    <button name="make_unavailable"  string="Make Locked" type="object"/>
                 </header>
                 <group>
                     <group>
